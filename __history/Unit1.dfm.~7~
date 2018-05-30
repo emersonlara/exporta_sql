@@ -1,0 +1,402 @@
+object Form1: TForm1
+  Left = 283
+  Top = 141
+  Caption = 'Form1'
+  ClientHeight = 608
+  ClientWidth = 966
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object TxtTotalLocal: TLabel
+    Left = 552
+    Top = 576
+    Width = 66
+    Height = 20
+    Caption = 'Total de'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -16
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object txtTotalInserido: TLabel
+    Left = 488
+    Top = 272
+    Width = 66
+    Height = 20
+    Caption = 'Total de'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -16
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label1: TLabel
+    Left = 576
+    Top = 260
+    Width = 79
+    Height = 13
+    Caption = 'Nome da Tabela'
+  end
+  object DBGrid1: TDBGrid
+    Left = 0
+    Top = 8
+    Width = 969
+    Height = 249
+    DataSource = DataSource1
+    TabOrder = 0
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'MS Sans Serif'
+    TitleFont.Style = []
+  end
+  object DBNavigator1: TDBNavigator
+    Left = 0
+    Top = 264
+    Width = 380
+    Height = 41
+    DataSource = DataSource1
+    TabOrder = 1
+  end
+  object DBGrid2: TDBGrid
+    Left = 0
+    Top = 312
+    Width = 969
+    Height = 249
+    DataSource = DataSource2
+    TabOrder = 2
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'MS Sans Serif'
+    TitleFont.Style = []
+  end
+  object DBNavigator2: TDBNavigator
+    Left = 0
+    Top = 568
+    Width = 380
+    Height = 41
+    DataSource = DataSource2
+    TabOrder = 3
+  end
+  object BitBtn1: TBitBtn
+    Left = 400
+    Top = 272
+    Width = 81
+    Height = 25
+    Caption = 'Insere tudo'
+    TabOrder = 4
+    OnClick = BitBtn1Click
+  end
+  object BitBtn2: TBitBtn
+    Left = 400
+    Top = 576
+    Width = 137
+    Height = 25
+    Caption = 'Apaga tudo'
+    TabOrder = 5
+    OnClick = BitBtn2Click
+  end
+  object Button1: TButton
+    Left = 848
+    Top = 272
+    Width = 121
+    Height = 25
+    Caption = 'Clonar a tabela1 p/ PG'
+    TabOrder = 6
+    OnClick = Button1Click
+  end
+  object TxtTabela: TEdit
+    Left = 576
+    Top = 275
+    Width = 169
+    Height = 21
+    TabOrder = 7
+    Text = 'LOG'
+  end
+  object BitBtn3: TBitBtn
+    Left = 760
+    Top = 272
+    Width = 75
+    Height = 25
+    Caption = 'Abrir'
+    TabOrder = 8
+    OnClick = BitBtn3Click
+  end
+  object BitBtn4: TBitBtn
+    Left = 744
+    Top = 576
+    Width = 75
+    Height = 25
+    Caption = 'Abrir'
+    TabOrder = 9
+    OnClick = BitBtn4Click
+  end
+  object BitBtn5: TBitBtn
+    Left = 832
+    Top = 576
+    Width = 113
+    Height = 25
+    Caption = 'Adicionar SQL'
+    TabOrder = 10
+    OnClick = BitBtn5Click
+  end
+  object DataSource1: TDataSource
+    DataSet = ZQuery1
+    Left = 80
+    Top = 144
+  end
+  object ZConnection1: TZConnection
+    ControlsCodePage = cCP_UTF16
+    Catalog = ''
+    TransactIsolationLevel = tiReadCommitted
+    HostName = 'localhost'
+    Port = 0
+    Database = 'banco_sera_lido'
+    User = 'root'
+    Password = 'root'
+    Protocol = 'MariaDB-5'
+    Left = 80
+    Top = 16
+  end
+  object ZQuery1: TZQuery
+    Connection = ZConnection1
+    SortedFields = 'ID'
+    UpdateObject = ZUpdateSQL1
+    SQL.Strings = (
+      'Select * from log')
+    Params = <>
+    IndexFieldNames = 'ID Asc'
+    Left = 80
+    Top = 56
+  end
+  object ZUpdateSQL1: TZUpdateSQL
+    DeleteSQL.Strings = (
+      'DELETE FROM log'
+      'WHERE'
+      '  log.ID = :OLD_ID')
+    InsertSQL.Strings = (
+      'INSERT INTO log'
+      '  (DATA_HORA, EVENTO, USUARIO, PERFIL, NIVEL)'
+      'VALUES'
+      '  (:DATA_HORA, :EVENTO, :USUARIO, :PERFIL, :NIVEL)')
+    ModifySQL.Strings = (
+      'UPDATE log SET'
+      '  DATA_HORA = :DATA_HORA,'
+      '  EVENTO = :EVENTO,'
+      '  USUARIO = :USUARIO,'
+      '  PERFIL = :PERFIL,'
+      '  NIVEL = :NIVEL'
+      'WHERE'
+      '  log.ID = :OLD_ID')
+    UseSequenceFieldForRefreshSQL = False
+    Left = 80
+    Top = 96
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'DATA_HORA'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'EVENTO'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'USUARIO'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'PERFIL'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'NIVEL'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'OLD_ID'
+        ParamType = ptUnknown
+      end>
+  end
+  object ZUpdateSQL2: TZUpdateSQL
+    DeleteSQL.Strings = (
+      'DELETE FROM log'
+      'WHERE'
+      '  log.ID = :OLD_ID')
+    InsertSQL.Strings = (
+      'INSERT INTO log'
+      '  (DATA_HORA, EVENTO, USUARIO, PERFIL, NIVEL)'
+      'VALUES'
+      '  (:DATA_HORA, :EVENTO, :USUARIO, :PERFIL, :NIVEL)')
+    ModifySQL.Strings = (
+      'UPDATE log SET'
+      '  DATA_HORA = :DATA_HORA,'
+      '  EVENTO = :EVENTO,'
+      '  USUARIO = :USUARIO,'
+      '  PERFIL = :PERFIL,'
+      '  NIVEL = :NIVEL'
+      'WHERE'
+      '  log.ID = :OLD_ID')
+    UseSequenceFieldForRefreshSQL = False
+    Left = 712
+    Top = 408
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'DATA_HORA'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'EVENTO'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'USUARIO'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'PERFIL'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'NIVEL'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'OLD_ID'
+        ParamType = ptUnknown
+      end>
+  end
+  object ZConnection2: TZConnection
+    ControlsCodePage = cCP_UTF16
+    Catalog = ''
+    TransactIsolationLevel = tiReadCommitted
+    HostName = ''
+    Port = 0
+    Database = 'novo_banco'
+    User = 'root'
+    Password = 'root'
+    Protocol = 'MariaDB-5'
+    Left = 712
+    Top = 328
+  end
+  object ZQuery2: TZQuery
+    Connection = ZConnection2
+    SortedFields = 'ID'
+    UpdateObject = ZUpdateSQL2
+    SQL.Strings = (
+      'Select * from log')
+    Params = <>
+    IndexFieldNames = 'ID Asc'
+    Left = 712
+    Top = 368
+  end
+  object DataSource2: TDataSource
+    DataSet = ZQuery2
+    Left = 712
+    Top = 456
+  end
+  object ZConnection3: TZConnection
+    ControlsCodePage = cCP_UTF16
+    Catalog = ''
+    TransactIsolationLevel = tiReadCommitted
+    HostName = 'localhost'
+    Port = 0
+    Database = 'teste_banco'
+    User = 'postgres'
+    Password = 'root'
+    Protocol = 'postgresql-8'
+    Left = 904
+    Top = 304
+  end
+  object ZQuery3: TZQuery
+    Connection = ZConnection3
+    SortedFields = 'ID'
+    UpdateObject = ZUpdateSQL3
+    SQL.Strings = (
+      'Select * from log')
+    Params = <>
+    IndexFieldNames = 'ID Asc'
+    Left = 904
+    Top = 336
+  end
+  object ZUpdateSQL3: TZUpdateSQL
+    DeleteSQL.Strings = (
+      'DELETE FROM log'
+      'WHERE'
+      '  log.ID = :OLD_ID')
+    InsertSQL.Strings = (
+      'INSERT INTO log'
+      '  (DATA_HORA, EVENTO, USUARIO, PERFIL, NIVEL)'
+      'VALUES'
+      '  (:DATA_HORA, :EVENTO, :USUARIO, :PERFIL, :NIVEL)')
+    ModifySQL.Strings = (
+      'UPDATE log SET'
+      '  DATA_HORA = :DATA_HORA,'
+      '  EVENTO = :EVENTO,'
+      '  USUARIO = :USUARIO,'
+      '  PERFIL = :PERFIL,'
+      '  NIVEL = :NIVEL'
+      'WHERE'
+      '  log.ID = :OLD_ID')
+    UseSequenceFieldForRefreshSQL = False
+    Left = 904
+    Top = 368
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'DATA_HORA'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'EVENTO'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'USUARIO'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'PERFIL'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'NIVEL'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'OLD_ID'
+        ParamType = ptUnknown
+      end>
+  end
+  object DataSource3: TDataSource
+    DataSet = ZQuery3
+    Left = 904
+    Top = 408
+  end
+end

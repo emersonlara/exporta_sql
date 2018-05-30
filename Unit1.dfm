@@ -1,9 +1,9 @@
 object Form1: TForm1
   Left = 283
   Top = 141
-  Width = 982
-  Height = 647
   Caption = 'Form1'
+  ClientHeight = 608
+  ClientWidth = 966
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -156,13 +156,15 @@ object Form1: TForm1
     Top = 144
   end
   object ZConnection1: TZConnection
+    ControlsCodePage = cCP_UTF16
+    Catalog = ''
     TransactIsolationLevel = tiReadCommitted
-    HostName = '127.0.0.1'
+    HostName = 'localhost'
     Port = 0
-    Database = 'masterloja'
+    Database = 'banco_sera_lido'
     User = 'root'
     Password = 'root'
-    Protocol = 'mysql-5'
+    Protocol = 'MariaDB-5'
     Left = 80
     Top = 16
   end
@@ -286,14 +288,15 @@ object Form1: TForm1
       end>
   end
   object ZConnection2: TZConnection
+    ControlsCodePage = cCP_UTF16
+    Catalog = ''
     TransactIsolationLevel = tiReadCommitted
-    Connected = True
-    HostName = '192.168.1.9'
+    HostName = 'localhost'
     Port = 0
-    Database = 'masterloja_local'
+    Database = 'novo_banco'
     User = 'root'
     Password = 'root'
-    Protocol = 'mysql-5'
+    Protocol = 'MariaDB-5'
     Left = 712
     Top = 328
   end
@@ -314,9 +317,10 @@ object Form1: TForm1
     Top = 456
   end
   object ZConnection3: TZConnection
+    ControlsCodePage = cCP_UTF16
+    Catalog = ''
     TransactIsolationLevel = tiReadCommitted
-    Connected = True
-    HostName = '127.0.0.1'
+    HostName = 'localhost'
     Port = 0
     Database = 'teste_banco'
     User = 'postgres'
